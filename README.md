@@ -52,3 +52,49 @@
 - 라이브러리 처럼 `router` 를 사용하지 않아도 되므로 편리함
 
 <br/>
+
+<br/>
+<hr/>
+
+###### 20230503
+
+> ## Next.js Rendering
+
+<br/>
+
+- `Next.js` 는 `CRA(Create React App)` 와는 다르게 미리 웹 페이지를 만든 후 사용자에게 전달
+- 사용자의 인터넷 속도, JS 동작 여부와는 상관없이 html 을 정상적으로 보여줌
+
+<br/>
+<br/>
+<img src ="md_resources\resource_05.png" height="100"/>
+<br/>
+
+`Next.js` 는 웹페이지를 **Pre-Rendering** 한 후 뿌려줌
+
+`ctrl + U` 로 확인하면 다수의 스크립트들이 보임
+
+<br/>
+<img src ="md_resources\resource_06.png" height="100"/>
+<br/>
+<br/>
+
+웹 페이지에서 JS 기능이 동작하지 않을 때를 테스트 하기 위 해 만든 테스트 페이지
+
+<br/>
+<img src ="md_resources\resource_07.png" height="100"/>
+<br/>
+<br/>
+
+`F12 > Setting > Preferences > Debugger` 의 JS 사용을 잠시 제한
+
+<br/>
+<img src ="md_resources\resource_08.png" height="100"/>
+<br/>
+<br/>
+
+웹 페이지를 확인 해 보면 **HTML** 은 있지만 JS 가 꺼져있기 때문에 동작은 하지 않는 모습
+
+`CRA` 로 만든 웹은 직접 JS 를 받아와서 실행하며 뿌려주기 때문에 JS 가 동작하지 않을 경우 웹 자체를 받아올 수 없음
+
+하지만 `Next.js` 는 **Pre-Rendering** 으로 먼저 받아오기 때문에 **HTML** 은 존재하되 동작만 되지 않음
