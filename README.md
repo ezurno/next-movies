@@ -77,20 +77,17 @@
 <br/>
 <img src ="md_resources\resource_06.png" height="100"/>
 <br/>
-<br/>
 
 웹 페이지에서 JS 기능이 동작하지 않을 때를 테스트 하기 위 해 만든 테스트 페이지
 
 <br/>
 <img src ="md_resources\resource_07.png" height="100"/>
 <br/>
-<br/>
 
 `F12 > Setting > Preferences > Debugger` 의 JS 사용을 잠시 제한
 
 <br/>
 <img src ="md_resources\resource_08.png" height="100"/>
-<br/>
 <br/>
 
 웹 페이지를 확인 해 보면 **HTML** 은 있지만 JS 가 꺼져있기 때문에 동작은 하지 않는 모습
