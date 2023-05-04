@@ -95,3 +95,100 @@
 `CRA` 로 만든 웹은 직접 JS 를 받아와서 실행하며 뿌려주기 때문에 JS 가 동작하지 않을 경우 웹 자체를 받아올 수 없음
 
 하지만 `Next.js` 는 **Pre-Rendering** 으로 먼저 받아오기 때문에 **HTML** 은 존재하되 동작만 되지 않음
+
+<br/>
+<br/>
+<hr/>
+
+###### 20230504
+
+> ## Link-Component
+
+<br/>
+
+```TSX
+export default function NavBar() {
+  return (
+    <nav>
+      <a href="/">
+        Home
+      </a>
+      <a href="/about">
+        About
+      </a>
+    </nav>
+  );
+```
+
+- `anchor tag` 를 사용해 간단하게 `routing` 을 살 수 있지만 권장되지 않음
+- `anchor` 를 사용하면 페이지가 새로고침 되기 때문에 `re-rendering`에 적합하지 않음
+- 따라서 `Next.js` 에서 제공하는 `Link` 를 사용
+
+```TSX
+export default function NavBar() {
+  return (
+    <nav>
+      <Link href="/">
+        Home
+      </Link>
+      <Link href="/about">
+        About
+      </Link>
+    </nav>
+  );
+
+  // Next ver 13 이후로 Link 안에 anchor 의 속성을 부여 할 수 있음 ex) className, style...
+```
+
+<br/>
+<br/>
+<p>
+<img src="md_resources/resource_09.png" height="150"/>
+<img src="md_resources/resource_10.png" height="150"/>
+<p/>
+
+정상적으로 작동하는 모습
+
+<br/>
+
+> ## useRouter-Hook
+
+<br/>
+
+- `Next.js` 에는 **url** 을 관리하기 편하게 해주는 `Hook` 이 존재 함
+- `useRouter()`
+
+<br/>
+
+```TSX
+
+export default function NavBar() {
+  const router = useRouter();
+  // Next.js 내 route 를 관리하는 Hook, console.log 를 찍어보면 상세 정보를 알 수 있음
+  // console.log(router);
+  return (
+    <nav>
+      <Link
+        style={{
+          color: router.pathname === "/" ? "red " : "blue",
+        }}
+        href="/"
+      >
+        Home
+      </Link>
+      <Link
+        style={{
+          color: router.pathname === "/about" ? "red " : "blue",
+        }}
+        href="/about"
+      >
+        About
+      </Link>
+    </nav>
+  );
+}
+```
+
+<br/>
+<img src="md_resources/resource_11.png" height="150"/>
+<br/>
