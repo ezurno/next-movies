@@ -192,3 +192,124 @@ export default function NavBar() {
 <br/>
 <img src="md_resources/resource_11.png" height="150"/>
 <br/>
+
+<br/>
+<br/>
+<hr/>
+
+###### 20230505
+
+> ## module.css
+
+<br/>
+
+- `Next.js` 에서 `css` 를 주는 방법 중에 `module` 을 사용하는 방법
+- **동일한 파일명에 .module.css 로 새로운 파일 생성**
+- 해당하는 `Component` 에 `import` 후 사용
+- 개별적인 `css` 만들기는 편리하지만 전역 스타일을 만들때는 권장하지 않음
+- 파일이 추가적으로 생성되는 것이 단점
+
+<br/>
+
+```TSX
+import styles from "./NavBar.module.css";
+export default function NavBar() {
+  const router = useRouter();
+  return (
+    <nav>
+      <Link
+        className={`${styles.link} ${
+          router.pathname === "/" ? styles.active : ""
+        }`}
+        href="/"
+      >
+        Home
+      </Link>
+```
+
+<br/>
+<br/>
+
+> ## style JSX
+
+<br/>
+
+- `Next.js` 에서 `css` 를 주는 방법 중에 `JSX` 를 사용하는 방법
+- 비교적 간단하며 `style` tag 를 열어 생성
+- **개별적**이며 전역 스타일을 만들 순 있지만 관리하기 힘드므로 좋은방법 X
+
+<br/>
+
+```TSX
+    <>
+      <nav>
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <style jsx global>{`
+          a {
+            text-decoration: none;
+          }
+          nav {
+            background-color: tomato;
+          }
+        `}</style>
+      </nav>
+```
+
+<br/>
+<br/>
+
+> ## Custom App
+
+<br/>
+
+- `Next.js` 에서는 **rendering** 할 **page component**를 Component와 Component에서 사용하는 pageProps를 인자로 받는 **App** 을 제일 먼저 렌더링
+- **App** 이 기본적으로 내장 되어 있지만 해당하는 **App** 을 수정하기 위해선 `_app` 으로 파일을 만들어 수정해야 함
+- **오로지 App 에서만 global.css 에 접근 할 수 있으며** 나머지 **파일은 개별 module 파일을 사용하는 것을 권장**
+
+<br/>
+
+```TSX
+import NavBar from "@/components/NavBar";
+import { AppProps } from "next/app";
+import "../styles/globals.css";
+// App 에서만 global.css 에 접근 할 수 있어야 한다.
+/*
+global.css 내부
+
+.active {
+  color: tomato;
+}
+*/
+
+export default function App({ Component, pageProps }: AppProps) {
+  // TS 로 개발 중 이므로 AppProps
+  return (
+    <>
+      <NavBar />
+      <Component {...pageProps} />
+      <a>Test</a>
+      <style jsx global>
+        {`
+          a {
+            color: green;
+          }
+        `}
+      </style>
+    </>
+  );
+}
+
+//NavBar.tsx
+        <style jsx>{`
+          a {
+            color: blue;
+          }
+        `}</style>
+```
+
+<br/>
+<img src="md_resources/resource_12.png" width="200"/>
+<br/>
+
+`global style` 과 `css JSX` 를 적절히 사용한 모습
