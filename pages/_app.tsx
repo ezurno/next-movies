@@ -8,14 +8,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <NavBar />
       <Component {...pageProps} />
-      <a>Test</a>
-      <style jsx global>
-        {`
-          a {
-            color: green;
-          }
-        `}
-      </style>
     </>
   );
 }
