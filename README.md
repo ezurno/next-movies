@@ -313,3 +313,56 @@ export default function App({ Component, pageProps }: AppProps) {
 <br/>
 
 `global style` 과 `css JSX` 를 적절히 사용한 모습
+
+<br/>
+<br/>
+<hr/>
+
+###### 20230506
+
+> ## Helmet title
+
+<br/>
+
+- `Next.js` 에서는 `CRA` 에서 `react-helmet` 을 설치해서 사용하는 것과 다르게 내부의 패키지를 사용해 바로 사용 가능
+- title 내부에 바로 작성하면 새로고침 시 **깨짐 현상이 생기므로 형식에 맞춰서 작성**
+
+<br/>
+
+```TSX
+//Helmet.tsx
+import Head from "next/head";
+// Next.js 에서는 즉각적으로 해당하는 패키지를 사용 할 수 있음
+
+interface IHelmet {
+  title: String;
+}
+
+export default function Helmet({ title }: IHelmet) {
+  return (
+    <>
+      <Head>
+        <title>{`${title} | Next Movies`}</title>
+      </Head>
+    </>
+  );
+}
+
+
+// about.tsx
+import Helmet from "@/components/Helmet";
+
+export default function about() {
+  return (
+    <div>
+      <Helmet title="about" />
+      <h1>About</h1>
+    </div>
+  );
+}
+
+```
+
+<br/>
+<img src="md_resources/resource_13.png" width="400"/>
+<br/>
