@@ -366,3 +366,77 @@ export default function about() {
 <br/>
 <img src="md_resources/resource_13.png" width="400"/>
 <br/>
+
+<br/>
+<br/>
+<hr/>
+
+> ## connect API
+
+<br/>
+
+- **API** 를 받아올 **OpenAPI** [링크](https://www.themoviedb.org/)
+- API 를 받아오기 위해 `react-query` 사용
+
+<br/>
+
+```TSX
+// api/api.ts
+export function getMovies() {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+  ).then((response) => response.json());
+}
+
+// index.tsx
+export default function Home() {
+  const { data, isLoading } = useQuery<IGetMoviesProps>(
+    ["movie, popular"],
+    getMovies
+  ); // react-query 를 이용
+
+  return (
+    <div className="container">
+      <Helmet title="home" />
+      {isLoading ? (
+        <h4>Loading...</h4>
+      ) : (
+        data?.results.map((movie) => (
+          <div className="movie" key={movie.id}>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+            <h4>{movie.original_title}</h4>
+          </div>
+        ))
+      )}
+
+      <style jsx>{styled}</style>
+    </div>
+  );
+}
+
+// _app.tsx
+export default function App({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient();
+  // react-query 를 사용하기 위함
+  return (
+    <>
+      <Layout>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </Layout>
+    </>
+  );
+}
+```
+
+<br/>
+<p>
+<img src="md_resources/resource_14.png" height="400"/>
+<img src="md_resources/resource_15.png" height="400"/>
+<p/>
+<br/>
+
+`react-query` 를 사용해 **API** 통신하는 모습
+
+그 후 `CSS` 도 입혀주었음
