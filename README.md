@@ -440,3 +440,71 @@ export default function App({ Component, pageProps }: AppProps) {
 `react-query` 를 사용해 **API** 통신하는 모습
 
 그 후 `CSS` 도 입혀주었음
+
+<br/>
+<br/>
+<hr/>
+
+###### 20230507
+
+> ## Redirects()
+
+<br/>
+
+- `redirects()` 는 해당하는 주소에 방문 하였을 때 **다른 주소로 우회 해줌**
+- `source` 는 요청하는 주소, `destination` 은 목적지 주소, `permanent` 는 영속성 (브라우저나 검색엔진이 해당 값을 기억하는지)
+- `*` 는 해당 **url-source** 값을 **catch** 하는데 사용
+
+<br/>
+
+```JS
+const nextConfig = {
+  reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/old/:path*",
+        destination: "/new/:path*",
+        permanent: false,
+      },
+    ];
+  },
+};
+```
+
+<br/>
+<br/>
+
+> ## Rewrites()
+
+<br/>
+
+- `rewrites()` 는 해당하는 주소로 방문 할 시 **동작하는 url 과 보여지는 url 이 다름**
+- 해당하는 특징을 이용해 `api-key` 등을 **masking** 하는데 유용
+
+<br/>
+
+```JS
+const API_KEY = process.env.API_KEY; // env 파일을 생성해 API_KEY 를 숨겨줌
+
+const nextConfig = {
+  reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: "/api/movies",
+        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      },
+    ];
+  },
+};
+```
+
+<br/>
+<p>
+<img src="md_resources/resource_17.png" height="150"/>
+<img src="md_resources/resource_18.png" height="150"/>
+<p>
+<br/>
+<img src="md_resources/resource_16.png" height="150"/>
+<br/>
