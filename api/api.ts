@@ -1,4 +1,4 @@
-const API_KEY = "bf337bf14426b2433da0e98951939ed8";
+export const API_KEY = process.env.API_KEY;
 
 export interface IGetMoviesProps {
   page: number;
@@ -19,7 +19,5 @@ interface IMovieProps {
 }
 
 export function getMovies() {
-  return fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
-  ).then((response) => response.json());
+  return fetch(`/api/movies`).then((response) => response.json());
 }
