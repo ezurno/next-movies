@@ -11,6 +11,11 @@ const styled = css`
     padding: 20px;
     grid-gap: 20px;
   }
+
+  .movie {
+    cursor: pointer;
+  }
+
   .movie img {
     max-width: 100%;
     border-radius: 12px;
@@ -40,7 +45,7 @@ export default function Home({
 
       {results?.map((movie: IMovieProps) => (
         <div className="movie" key={movie.id}>
-          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>{movie.original_title}</h4>
         </div>
       ))}
