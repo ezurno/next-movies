@@ -2,6 +2,7 @@ import { getMovies, IGetMoviesProps, IMovieProps } from "@/api/api";
 import Helmet from "@/components/Helmet";
 import { useQuery } from "@tanstack/react-query";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Link from "next/link";
 import css from "styled-jsx/css";
 
 const styled = css`
@@ -44,10 +45,21 @@ export default function Home({
       <Helmet title="home" />
 
       {results?.map((movie: IMovieProps) => (
-        <div className="movie" key={movie.id}>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <h4>{movie.original_title}</h4>
-        </div>
+        <Link
+          href={{
+            pathname: `/movies/${movie.id}`,
+            query: {
+              title: movie.original_title,
+            },
+          }}
+          as={`/movies/${movie.id}`}
+          key={movie.id}
+        >
+          <div className="movie">
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+            <h4>{movie.original_title}</h4>
+          </div>
+        </Link>
       ))}
 
       <style jsx>{styled}</style>
