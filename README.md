@@ -508,3 +508,88 @@ const nextConfig = {
 <br/>
 <img src="md_resources/resource_16.png" height="150"/>
 <br/>
+
+<br/>
+<br/>
+<hr/>
+
+###### 20230508
+
+> ## Dynamic route
+
+<br/>
+
+- `Next.js` 는 **page > (folder-name) > [variable-name]** 으로 페이지를 동적으로 라우팅 할 수 있음
+- `useRouter()` hook 과 연계하면 간단하게 만들 수 있음
+- `useRouter()` 로 넘겨주는 `query` 값이 많아 url 이 지저분 할 수 있는데 **Masking** 으로 해결
+
+<br/>
+
+```TSX
+
+  return (
+    // index.tsx
+    <div className="container">
+      <Helmet title="home" />
+
+      {results?.map((movie: IMovieProps) => (
+        <Link
+          href={{
+            pathname: `/movies/${movie.id}`,
+            query: {
+              title: movie.original_title,
+            },
+          }}
+          as={`/movies/${movie.id}`}
+          key={movie.id}
+        >
+          <div className="movie">
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+            <h4>{movie.original_title}</h4>
+          </div>
+        </Link>
+      ))}
+
+      <style jsx>{styled}</style>
+    </div>
+  );
+
+  // movies/[id].tsx
+  import { useRouter } from "next/router";
+
+  export default function Detail() {
+    const router = useRouter();
+
+    return (
+      <div>
+        <h4>{router.query.title || "Loading..."}</h4>
+      </div>
+    );
+  }
+
+  // next.config.js
+    async rewrites() {
+    return [
+      {
+        source: "/api/movies",
+        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      },
+
+      {
+        source: "/api/movies/:id",
+        destination: `https://api.themoviedb.org/3/movie/:id?api_key=${API_KEY}`,
+      },
+      // movie/{movie_id} 에 id 가 들어가야 하므로
+      // api 의 위치는 openAPI 문서를 찾아보자
+    ];
+  },
+
+```
+
+<br/>
+<img src="md_resources/resource_19.png" height="200"/>
+<br/>
+<p>
+<img src="md_resources/resource_20.png" height="120"/>
+<img src="md_resources/resource_21.png" height="120"/>
+<p/>
