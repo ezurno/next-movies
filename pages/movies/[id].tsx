@@ -2,10 +2,9 @@ import Helmet from "@/components/Helmet";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 
-// type DetailParams = [string, string] | [];
-// // server-side-rendering 을 하면 배열이 없을 경우가 생기므로 type 을 빈 배열도 추가해 준다.
-
-export default function Detail({ data }: any) {
+export default function Detail({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div>
       <Helmet title={data.title} />
