@@ -7,7 +7,7 @@ export interface IGetMoviesProps {
   total_results: number;
 }
 
-interface IMovieProps {
+export interface IMovieProps {
   id: number;
   backdrop_path: string;
   original_title: string;
