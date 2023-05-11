@@ -15,20 +15,33 @@ const styled = css`
 
   .movie {
     cursor: pointer;
+    background-color: darkgrey;
+    border-radius: 15px;
+    transition: transform 0.2s ease-in-out;
   }
 
   .movie img {
     max-width: 100%;
-    border-radius: 12px;
-    transition: transform 0.2s ease-in-out;
+    border-radius: 12px 12px 0px 0px;
+    /* transition: transform 0.2s ease-in-out; */
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }
-  .movie:hover img {
+  .movie:hover {
     transform: scale(1.05) translateY(-10px);
   }
-  .movie h4 {
+
+  .movieTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+  }
+
+  .movieTitle h4 {
     font-size: 18px;
     text-align: center;
+    margin: 0;
+    color: white;
   }
 `;
 
@@ -57,7 +70,9 @@ export default function Home({
         >
           <div className="movie">
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-            <h4>{movie.original_title}</h4>
+            <div className="movieTitle">
+              <h4>{movie.original_title}</h4>
+            </div>
           </div>
         </Link>
       ))}
