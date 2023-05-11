@@ -620,8 +620,10 @@ const inter = Roboto({
 ```
 
 <br/>
+<p>
 <img src="md_resources/resource_22.png" height="400"/>
 <img src="md_resources/resource_23.png" height="400"/>
+<p/>
 <br/>
 
 자잘한 스타일 추가

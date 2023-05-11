@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import NavBar from "./NavBar";
 
 interface ILayoutProps {
@@ -9,6 +10,7 @@ export default function Layout({ children }: ILayoutProps) {
     <>
       <NavBar />
       <div>{children}</div>
+      <Footer />
     </>
   );
 }
