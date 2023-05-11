@@ -627,3 +627,43 @@ const inter = Roboto({
 <br/>
 
 자잘한 스타일 추가
+
+<br/>
+
+`npm install react-icons --save`
+
+```TSX
+// Footer.tsx
+import { FaGithubSquare } from "react-icons/fa";
+
+...
+
+
+export default function Footer() {
+  return (
+    <>
+      <div className="footer">
+        <Link href="https://github.com/ezurno/next-movies">
+          <div className="footText">
+            <FaGithubSquare
+              style={{
+                color: "darkgrey",
+                fontSize: "50px",
+              }}
+            />
+
+            <h4>20230511 @ezurno</h4>
+          </div>
+        </Link>
+      </div>
+      <style jsx>{styled}</style>
+    </>
+  );
+}
+```
+
+<br/>
+<img src="md_resources/resource_24.png" height="400"/>
+<br/>
+
+하단부분 `footer` 와 `GitHub-icon` 추가
