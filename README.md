@@ -593,3 +593,35 @@ const nextConfig = {
 <img src="md_resources/resource_20.png" height="120"/>
 <img src="md_resources/resource_21.png" height="120"/>
 <p/>
+
+<br/>
+<br/>
+<hr/>
+
+###### 20230511
+
+> ## Next.js font
+
+<br/>
+
+- `Next.js` 는 `google-font` 가 내장되어 있음
+- 바로 사용하면 됨 [공식문서 참고](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts)
+
+<br/>
+
+```TSX
+import { Roboto } from "next/font/google";
+// next.js 는 google-font 가 내장 되어있음
+
+const inter = Roboto({
+  preload: false,
+  weight: ["400"],
+}); // 쓰는법은 공식문서 참고
+```
+
+<br/>
+<img src="md_resources/resource_22.png" height="400"/>
+<img src="md_resources/resource_23.png" height="400"/>
+<br/>
+
+자잘한 스타일 추가
