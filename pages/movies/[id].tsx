@@ -97,7 +97,7 @@ export async function getServerSideProps(context: any) {
   const { id } = context.query;
   console.log(id);
   const data = await (
-    await fetch(`http://localhost:3000/api/movies/${id}`)
+    await fetch(`https://next-movies-ezurno.vercel.app/api/movies/${id}`)
   ).json();
   return {
     props: { data },
