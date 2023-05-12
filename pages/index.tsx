@@ -87,7 +87,7 @@ export async function getServerSideProps({}: GetServerSideProps) {
   // 해당함수를 사용하면 client 가 아닌 server 내에서만 작동 (Hiding 가능)
 
   const { results } = await (
-    await fetch(`https://next-movies-vercel.vercel.app/api/movies`)
+    await fetch(`https://next-movies-ezurno.vercel.app/api/movies`)
   ).json();
 
   return {
