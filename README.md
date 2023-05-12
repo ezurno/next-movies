@@ -663,7 +663,29 @@ export default function Footer() {
 ```
 
 <br/>
-<img src="md_resources/resource_24.png" height="400"/>
+<img src="md_resources/resource_24.png" height="200"/>
 <br/>
 
 하단부분 `footer` 와 `GitHub-icon` 추가
+
+<br/>
+<br/>
+<hr/>
+
+###### 20230512
+
+> ## 404-Not Found
+
+<br/>
+
+- `Next.js` 에서는 **404:Not-Found** 를 손쉽게 컨트롤 할 수 있음
+- `pages > 404.tsx` 생성
+
+<br/>
+<p>
+<img src="md_resources/resource_25.png" height="400"/>
+<img src="md_resources/resource_26.png" height="400"/>
+</p>
+<br/>
+
+`404 page` 와 `about page` setting
