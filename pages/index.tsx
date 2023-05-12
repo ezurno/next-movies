@@ -85,6 +85,7 @@ export default function Home({
 export async function getServerSideProps({}: GetServerSideProps) {
   // 해당 function 은 name 규칙이 정해져있으므로 다른 이름 X
   // 해당함수를 사용하면 client 가 아닌 server 내에서만 작동 (Hiding 가능)
+  console.log(process.env.API_KEY);
 
   const { results } = await (
     await fetch(`https://next-movies-ezurno.vercel.app/api/movies`)
