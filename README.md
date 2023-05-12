@@ -1,10 +1,12 @@
 # 🛠️Next.js 를 사용한 간단한 웹 만들기
 
 <br/>
+<p>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" />
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white" />
 <img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=React-Query&logoColor=white" />
 <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white" />
+<p/>
 <br/>
 
 ## 시작하기 전에...
